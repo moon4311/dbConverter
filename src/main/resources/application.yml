@@ -1,0 +1,70 @@
+server:
+  port: 8071
+  error:
+    whitelabel.enabled: true
+
+security:
+  basic:
+    enabled: false
+
+spring:
+  profiles.active: local
+  application.name: converter
+
+server.tomcat.basedir: .
+logging.config: classpath:logback-spring.xml
+
+########## spring.batch ##########
+spring.batch:
+  initializer.enabled: false
+  job.enabled: false
+#  job.names: result_job
+
+########## spring.datasource 1 ##########
+spring.db1.datasource:
+  type: org.apache.tomcat.jdbc.pool.DataSource
+  driver-class-name: oracle.jdbc.OracleDriver
+  url: jdbc:oracle:thin:@localhost:1521:orcl
+#  resource: classpath:jinbid/converter3/comn/mapper106/*-mapper.xml
+  resource: classpath:migration/from/*-mapper.xml
+  username: NAVST
+  password: 1111
+  max-active: 100
+  test-on-borrow: true
+  validation-query: SELECT 1
+########## spring.datasource 2 ##########
+spring.db2.datasource:
+  type: org.apache.tomcat.jdbc.pool.DataSource
+  driver-class-name: oracle.jdbc.driver.OracleDriver
+  url: jdbc:oracle:thin:@localhost:1521:orcl
+#  resource: classpath:jinbid/converter3/comn/mapper106/*-mapper.xml
+  resource: classpath:migration/to/*-mapper.xml
+  username: NAVST
+  password: 1111
+  max-active: 100
+  test-on-borrow: true
+  validation-query: SELECT 1
+
+app.test.mode: true
+
+---
+
+spring:
+  profiles: local
+
+#app.test.mode: false
+
+---
+
+spring:
+  profiles: dev
+
+---
+
+spring:
+  profiles: prod
+
+
+logging.config: classpath:logback-spring-file.xml
+
+app.test.mode: false

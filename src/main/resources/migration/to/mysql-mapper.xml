@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.migration.mapper.to.mapper.mysql-mapper">
+  
+  <insert id="insert" parameterType="Map">
+     INSERT INTO JNIT_ORG_CHART
+     	(JOC_ID,
+		JOC_NAME,
+		JOC_TEAM_NAME,
+		JOC_UPPER_ID,
+		JOC_SORT_NO,
+		JOC_TASK,
+		JOC_TEL,
+		JOC_FAX,
+		CREATED_MBR_ID,
+		CREATED,
+		MODIFIED_MBR_ID,
+		MODIFIED,
+		ISDEL)
+     VALUES
+	(#{JOC_ID},
+	 #{JOC_NAME},
+	 #{JOC_TEAM_NAME},
+	 #{JOC_UPPER_ID},
+	 #{JOC_SORT_NO},
+	 #{JOC_TASK},
+	 #{JOC_TEL},
+	 #{JOC_FAX},
+	 #{CREATED_MBR_ID},
+	 #{CREATED},
+	 #{MODIFIED_MBR_ID},
+	 #{MODIFIED},
+    'N'
+    )
+   </insert>
+    
+</mapper>
